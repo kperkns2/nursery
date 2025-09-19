@@ -11,17 +11,21 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🌱 Grow Knowledge. Grow Sales.")
-st.subheader("Audio Training for Nursery Staff & Customers")
+# -------------------
+# Header
+# -------------------
+st.title("🌱 Nursery Knowledge Training")
+st.subheader("Turn Plant Enthusiasts Into Confident, Trusted Advisors")
 
-# -------------------
-# Hero Section
-# -------------------
 st.markdown("""
-Boost your nursery’s reputation with staff who **sound like experts**.  
-In Missouri, nearly **40% of 5-star nursery reviews mention “knowledgeable staff.”**  
-Our short, practical audio episodes sharpen your team’s plant knowledge —  
-so they can deliver the confident advice customers love.
+When customers walk into your nursery, they’re not just buying plants —  
+they’re buying **expertise**.  
+
+In Missouri, nearly **40% of 5-star reviews for local nurseries mention “knowledgeable staff.”**  
+That trust directly drives repeat business and higher sales.  
+
+We help your team shine with **short, practical audio training episodes** —  
+easy to listen to, and immediately useful with customers.
 """)
 
 # -------------------
@@ -32,9 +36,24 @@ audio_file = open("soil_ammendments.mp3", "rb")
 st.audio(audio_file.read(), format="audio/mp3")
 
 st.markdown("""
-This 5-minute episode trains staff how to explain clay, loam, and rocky soils —  
-plus what amendments work best. Every episode is **practical, customer-oriented,  
-and designed to increase customer trust**.
+This 5-minute episode helps staff explain the differences between **clay, loam, and rocky soils**,  
+and how to recommend the **right amendments** with confidence.  
+
+Every episode is:
+- ✅ **Focused** on the questions real customers ask  
+- ✅ **Actionable** with clear talking points staff can use right away  
+- ✅ **Designed** to build trust, upsell naturally, and create loyal customers  
+""")
+
+# -------------------
+# Benefits Section
+# -------------------
+st.markdown("### 🌟 Why Nurseries Love This Training")
+st.markdown("""
+- **Boost Reviews & Reputation** — Customers value knowledgeable staff more than price.  
+- **Train Efficiently** — 5-minute episodes fit into daily routines.  
+- **Increase Sales** — Confident recommendations lead to more purchases.  
+- **Build Loyalty** — Staff sound like plant experts, customers keep coming back.  
 """)
 
 # -------------------
@@ -43,14 +62,12 @@ and designed to increase customer trust**.
 SCOPE = ["https://spreadsheets.google.com/feeds",
          "https://www.googleapis.com/auth/drive"]
 
-# Read the service account JSON from secrets
 creds = Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
     scopes=SCOPE
 )
 client = gspread.authorize(creds)
 
-# Open your sheet (replace with your actual Spreadsheet ID)
 SPREADSHEET_ID = st.secrets["spreadsheet_id"]
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
@@ -58,13 +75,20 @@ sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 # Lead Form
 # -------------------
 st.markdown("---")
-st.markdown("## 📋 Get More Information")
+st.markdown("## 📋 Request More Information")
+
+st.markdown("""
+Interested in bringing **expert audio training** to your nursery?  
+Fill out the form below and we’ll share pricing, customization options,  
+and how other nurseries are using this to **improve staff confidence**  
+and **grow their bottom line**.
+""")
 
 with st.form("lead_form"):
     name = st.text_input("Your Name")
     email = st.text_input("Work Email")
     nursery_name = st.text_input("Nursery Name")
-    message = st.text_area("What would you like to improve about your staff training?")
+    message = st.text_area("What would you most like to improve about staff training?")
 
     submitted = st.form_submit_button("Request Info")
     if submitted:
@@ -78,4 +102,4 @@ with st.form("lead_form"):
 # Footer
 # -------------------
 st.markdown("---")
-st.caption("Made for Missouri nurseries — empowering staff, delighting customers.")
+st.caption("Made for Missouri nurseries — empowering staff, delighting customers, and driving growth.")
