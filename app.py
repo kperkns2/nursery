@@ -11,6 +11,30 @@ st.set_page_config(
     layout="centered"
 )
 
+
+def highlight_section(text, bg="#E8F4FA", color="#004F71"):
+    """Big stylized highlight block for key stats/messages."""
+    st.markdown(
+        f"""
+        <div style="
+            background-color:{bg};
+            color:{color};
+            padding:2rem;
+            border-radius:12px;
+            margin:2rem 0;
+            text-align:center;
+            font-size:1.3rem;
+            font-weight:600;
+            line-height:1.6;
+        ">
+            {text}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+
 # -------------------
 # Helper for styled section
 # -------------------
@@ -37,15 +61,19 @@ styled_section(
         When customers walk into your nursery, they’re not just buying plants —  
         they’re buying **expertise**.  
 
-        In Missouri, nearly **40% of 5-star reviews for nurseries mention “knowledgeable staff.”**  
-        That knowledge directly drives trust, loyalty, and repeat business.  
-
         Our short, practical audio series equips your staff with the right words,  
         so they can confidently guide every customer decision.
         """
     ),
     bg="#FFFFFF"
 )
+
+
+highlight_section(
+        """In Missouri, nearly **40% of 5-star reviews for nurseries mention “knowledgeable staff.”**  
+        That knowledge directly drives trust, loyalty, and repeat business.  """ 
+)
+
 
 # -------------------
 # Audio Sample Section
