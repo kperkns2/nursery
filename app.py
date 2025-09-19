@@ -15,7 +15,7 @@ st.set_page_config(
 def section(content, bg="#FFFFFF"):
     st.markdown(
         f"""
-        <div style="background-color:{bg}; padding:2rem; border-radius:10px; margin-bottom:1.5rem;">
+        <div style="background-color:{bg}; padding:2rem; border-radius:10px; margin:1rem 0;">
             {content}
         </div>
         """,
@@ -37,25 +37,27 @@ That trust directly drives repeat business and higher sales.
 """, bg="#f9f9f9")
 
 # -------------------
-# Audio Sample
+# Audio Sample (High Emphasis)
 # -------------------
-audio_html = """
-<h3>🎧 Sample Training Episode</h3>
-<p><b>Soil Amendments in Missouri</b> (5 minutes)</p>
-"""
-st.markdown(audio_html, unsafe_allow_html=True)
+section("""
+<h3 style="text-align:center;">🎧 Listen to a Sample Training Episode</h3>
+<p style="text-align:center; font-size:1.1em; font-weight:bold;">
+Click play below to hear how we train staff to confidently explain soil amendments.
+</p>
+""", bg="#FFFFFF")
 
 audio_file = open("soil_ammendments.mp3", "rb")
 st.audio(audio_file.read(), format="audio/mp3")
 
-section("""
-This short episode helps staff explain the differences between **clay, loam, and rocky soils**,  
-and how to recommend the **right amendments** with confidence.  
+st.markdown("""
+👉 This 5-minute demo shows how staff can explain **clay, loam, and rocky soils**  
+in plain language, and recommend **the right amendments**.  
 
-✅ **Focused** on the questions real customers ask  
-✅ **Actionable** with clear talking points staff can use right away  
-✅ **Designed** to build trust, upsell naturally, and create loyal customers  
-""", bg="#eef6f0")
+Every episode is:  
+- ✅ Focused on real customer questions  
+- ✅ Actionable with talking points staff use immediately  
+- ✅ Designed to build trust & boost sales  
+""")
 
 # -------------------
 # Benefits
@@ -120,15 +122,15 @@ SPREADSHEET_ID = st.secrets["spreadsheet_id"]
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
 # -------------------
-# Lead Form CTA
+# Lead Form (CTA Emphasis)
 # -------------------
 section("""
-## 📋 Bring Expert Training to Your Nursery
-
-**Ready to grow staff knowledge and customer trust?**  
+<h2 style="text-align:center;">📋 Ready to Bring Expert Training to Your Nursery?</h2>
+<p style="text-align:center; font-size:1.1em;">
 Fill out the form below to get pricing, customization options,  
-and examples of how Missouri nurseries are already benefiting.
-""", bg="#eef6f0")
+and see how Missouri nurseries are already benefiting.
+</p>
+""", bg="#f9f9f9")
 
 with st.form("lead_form"):
     name = st.text_input("Your Name")
