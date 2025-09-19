@@ -11,103 +11,91 @@ st.set_page_config(
     layout="centered"
 )
 
-# Section helper for alternating backgrounds
-def section(content, bg="#FFFFFF"):
+# -------------------
+# Helper for layout
+# -------------------
+def section(content_func, bg="#FFFFFF"):
+    """Render a section with background and padding.
+       content_func should be a function that writes Streamlit elements.
+    """
     st.markdown(
         f"""
         <div style="background-color:{bg}; padding:2rem; border-radius:10px; margin:1rem 0;">
-            {content}
-        </div>
         """,
         unsafe_allow_html=True,
     )
+    content_func()
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # -------------------
-# Header
+# Header / Hero
 # -------------------
-st.title("🌱 Nursery Knowledge Training")
-st.subheader("Turn Plant Enthusiasts Into Confident, Trusted Advisors")
+st.title("🌱 Grow Knowledge. Grow Sales.")
+st.subheader("Audio Training for Nursery Staff & Customers")
 
-section("""
-When customers walk into your nursery, they’re not just buying plants —  
-they’re buying **expertise**.  
+section(
+    lambda: st.markdown(
+        """
+        When customers walk into your nursery, they’re not just buying plants —  
+        they’re buying **expertise**.  
 
-In Missouri, nearly **40% of 5-star reviews for local nurseries mention “knowledgeable staff.”**  
-That trust directly drives repeat business and higher sales.
-""", bg="#f9f9f9")
+        In Missouri, nearly **40% of 5-star reviews for nurseries mention “knowledgeable staff.”**  
+        That knowledge directly drives trust, loyalty, and repeat business.  
 
-# -------------------
-# Audio Sample (High Emphasis)
-# -------------------
-section("""
-<h3 style="text-align:center;">🎧 Listen to a Sample Training Episode</h3>
-<p style="text-align:center; font-size:1.1em; font-weight:bold;">
-Click play below to hear how we train staff to confidently explain soil amendments.
-</p>
-""", bg="#FFFFFF")
-
-audio_file = open("soil_ammendments.mp3", "rb")
-st.audio(audio_file.read(), format="audio/mp3")
-
-st.markdown("""
-👉 This 5-minute demo shows how staff can explain **clay, loam, and rocky soils**  
-in plain language, and recommend **the right amendments**.  
-
-Every episode is:  
-- ✅ Focused on real customer questions  
-- ✅ Actionable with talking points staff use immediately  
-- ✅ Designed to build trust & boost sales  
-""")
+        Our short, practical audio series equips your staff with the right words,  
+        so they can confidently guide every customer decision.
+        """
+    ),
+    bg="#FFFFFF"
+)
 
 # -------------------
-# Benefits
+# Audio Sample Section
 # -------------------
-section("""
-### 🌟 Why Nurseries Love This Training
+def audio_demo():
+    st.markdown("### 🎧 Featured Sample Episode")
+    st.markdown(
+        "**Soil Amendments in Missouri** — how to explain clay, loam, and rocky soils, "
+        "plus which amendments build trust with customers."
+    )
+    st.audio("soil_ammendments.mp3", format="audio/mp3")
+    st.markdown(
+        """
+        👉 This 5-minute training shows how everyday questions turn into customer confidence.  
+        Every episode is **practical, professional, and customer-oriented**.
+        """
+    )
 
-- **Boost Reviews & Reputation** — Customers value knowledgeable staff more than price.  
-- **Train Efficiently** — 5-minute episodes fit into daily routines.  
-- **Increase Sales** — Confident recommendations lead to more purchases.  
-- **Build Loyalty** — Staff sound like experts, customers keep coming back.  
-""", bg="#f9f9f9")
+section(audio_demo, bg="#F9F9F9")
 
 # -------------------
 # Series Overview
 # -------------------
-with st.expander("📚 Full Training Series Overview (25 Episodes)"):
-    st.markdown("""
-    Each episode is **5 minutes or less** and covers **real-world customer conversations**:
+def overview():
+    st.markdown("### 📚 The 25-Episode Training Series")
+    st.markdown(
+        """
+        Each episode is short, focused, and designed to help staff handle real customer scenarios.  
 
-    1. Greeting customers & making a great first impression  
-    2. Missouri soil types & simple amendment tips  
-    3. Choosing the right mulch for different plants  
-    4. Explaining fertilizer basics (NPK made simple)  
-    5. Watering: how much is too much?  
-    6. Shade vs. sun plants: helping customers choose  
-    7. How to recommend native plants customers will love  
-    8. Annuals vs. perennials: easy explanations  
-    9. Handling “why is my plant dying?” conversations  
-    10. Container gardening basics  
-    11. Seasonal color recommendations customers appreciate  
-    12. Pollinator-friendly plants (bees, butterflies, birds)  
-    13. Explaining drought-tolerant plants  
-    14. Low-maintenance landscaping ideas  
-    15. Trees for Missouri yards (small, medium, large)  
-    16. Shrubs for privacy, beauty, and low care  
-    17. Explaining fruit trees & edible landscaping  
-    18. Helping customers pick houseplants  
-    19. How to guide beginners without overwhelming them  
-    20. Upselling: soil, pots, and fertilizers naturally  
-    21. Seasonal sales tips: spring, summer, fall, winter  
-    22. Spotting and solving common pest problems  
-    23. Lawn basics: cool season grasses in Missouri  
-    24. Handling complaints with confidence  
-    25. Leaving a lasting impression: turning first-time buyers into regulars  
-    """)
-    st.info("Each episode is crafted to **train staff in real customer interactions** — not theory, just practical knowledge.")
+        **Topics include:**
+        - Missouri soil types & amendments  
+        - Choosing trees & shrubs for local climates  
+        - Seasonal care & maintenance tips  
+        - Explaining native vs. exotic plants  
+        - Watering, fertilizing, and pest prevention  
+        - Common customer questions — answered with confidence  
+        - And much more…
+        """
+    )
+    st.markdown(
+        "Together, the series builds a foundation of **expert communication** "
+        "that keeps your staff sharp and customers coming back."
+    )
+
+section(overview, bg="#FFFFFF")
 
 # -------------------
-# Connect to Google Sheets
+# Google Sheets Setup
 # -------------------
 SCOPE = ["https://spreadsheets.google.com/feeds",
          "https://www.googleapis.com/auth/drive"]
@@ -117,37 +105,34 @@ creds = Credentials.from_service_account_info(
     scopes=SCOPE
 )
 client = gspread.authorize(creds)
-
 SPREADSHEET_ID = st.secrets["spreadsheet_id"]
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
 # -------------------
-# Lead Form (CTA Emphasis)
+# Lead Capture Form
 # -------------------
-section("""
-<h2 style="text-align:center;">📋 Ready to Bring Expert Training to Your Nursery?</h2>
-<p style="text-align:center; font-size:1.1em;">
-Fill out the form below to get pricing, customization options,  
-and see how Missouri nurseries are already benefiting.
-</p>
-""", bg="#f9f9f9")
+def lead_form():
+    st.markdown("## 📋 Get More Information")
+    with st.form("lead_form"):
+        name = st.text_input("Your Name")
+        email = st.text_input("Work Email")
+        nursery_name = st.text_input("Nursery Name")
+        message = st.text_area(
+            "What would you like to improve about your staff training?"
+        )
 
-with st.form("lead_form"):
-    name = st.text_input("Your Name")
-    email = st.text_input("Work Email")
-    nursery_name = st.text_input("Nursery Name")
-    message = st.text_area("What would you most like to improve about staff training?")
+        submitted = st.form_submit_button("🚀 Request Info")
+        if submitted:
+            if not name or not email:
+                st.error("Please enter at least your name and email.")
+            else:
+                sheet.append_row([name, email, nursery_name, message])
+                st.success("✅ Thank you! We’ll be in touch shortly.")
 
-    submitted = st.form_submit_button("📨 Request Info")
-    if submitted:
-        if not name or not email:
-            st.error("Please enter at least your name and email.")
-        else:
-            sheet.append_row([name, email, nursery_name, message])
-            st.success("✅ Thank you! We’ll be in touch shortly.")
+section(lead_form, bg="#F9F9F9")
 
 # -------------------
 # Footer
 # -------------------
 st.markdown("---")
-st.caption("Made for Missouri nurseries — empowering staff, delighting customers, and driving growth.")
+st.caption("Made for Missouri nurseries — empowering staff, delighting customers.")
