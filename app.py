@@ -28,7 +28,7 @@ so they can deliver the confident advice customers love.
 # Demo Audio
 # -------------------
 st.markdown("### 🎧 Sample Episode: Soil Amendments in Missouri")
-audio_file = open("soil_episode.mp3", "rb")
+audio_file = open("soil_ammendments.mp3", "rb")
 st.audio(audio_file.read(), format="audio/mp3")
 
 st.markdown("""
