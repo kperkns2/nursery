@@ -11,9 +11,10 @@ st.set_page_config(
     layout="centered"
 )
 
-
+# -------------------
+# Highlight Section
+# -------------------
 def highlight_section(text, bg="#E8F4FA", color="#004F71"):
-    """Big stylized highlight block for key stats/messages."""
     st.markdown(
         f"""
         <div style="
@@ -33,10 +34,8 @@ def highlight_section(text, bg="#E8F4FA", color="#004F71"):
         unsafe_allow_html=True,
     )
 
-
-
 # -------------------
-# Helper for styled section
+# Styled Section
 # -------------------
 def styled_section(content_func, bg="#FFFFFF"):
     with st.container():
@@ -50,7 +49,7 @@ def styled_section(content_func, bg="#FFFFFF"):
         st.markdown("</div>", unsafe_allow_html=True)
 
 # -------------------
-# Header / Hero
+# Hero Section
 # -------------------
 st.title("🌱 Grow Knowledge. Grow Sales.")
 st.subheader("Audio Training for Nursery Staff & Customers")
@@ -68,27 +67,26 @@ styled_section(
     bg="#FFFFFF"
 )
 
-
 highlight_section(
-        """In Missouri, nearly **40% of 5-star reviews for nurseries mention “knowledgeable staff.”**  
-        That knowledge directly drives trust, loyalty, and repeat business.  """ 
+    "🌟 In Missouri, nearly **40% of 5-star nursery reviews** mention *knowledgeable staff*.\n\n"
+    "Ensure your team earns that praise — every customer, every visit."
 )
-
 
 # -------------------
 # Audio Sample Section
 # -------------------
 def audio_demo():
-    st.markdown("### 🎧 Featured Sample Episode")
+    st.markdown("### 🎧 Click to Listen: Soil Amendments in Missouri")
     st.markdown(
-        "**Soil Amendments in Missouri** — how to explain clay, loam, and rocky soils, "
-        "plus which amendments build trust with customers."
+        "**This 5-minute episode shows staff how to explain clay, loam, and rocky soils,** "
+        "and recommend the right amendments to customers with confidence."
     )
     st.audio("soil_ammendments.mp3", format="audio/mp3")
     st.markdown(
         """
-        👉 This 5-minute training shows how everyday questions turn into customer confidence.  
-        Every episode is **practical, professional, and customer-oriented**.
+        ✅ Practical, professional, and customer-oriented  
+        ✅ Builds staff confidence and customer trust  
+        ✅ Fits easily into daily routines
         """
     )
 
@@ -101,7 +99,7 @@ def overview():
     st.markdown("### 📚 The 25-Episode Training Series")
     st.markdown(
         """
-        Each episode is short, focused, and designed to help staff handle real customer scenarios.  
+        Each episode is short, focused, and designed to help staff handle real customer scenarios.
 
         **Topics include:**
         - Missouri soil types & amendments  
@@ -138,7 +136,11 @@ sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 # Lead Capture Form
 # -------------------
 def lead_form():
-    st.markdown("## 📋 Get More Information")
+    st.markdown("## 📋 Ready to Bring Expert Training to Your Nursery?")
+    st.markdown(
+        "Fill out the form below to receive pricing, customization options, "
+        "and see how Missouri nurseries are already benefiting."
+    )
     with st.form("lead_form"):
         name = st.text_input("Your Name")
         email = st.text_input("Work Email")
