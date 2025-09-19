@@ -57,6 +57,43 @@ st.markdown("""
 """)
 
 # -------------------
+# Series Overview
+# -------------------
+st.markdown("### 📚 Training Series Overview (25 Episodes)")
+
+st.markdown("""
+Each episode is **5 minutes or less** and covers **real-world customer conversations**:  
+
+1. Greeting customers & making a great first impression  
+2. Missouri soil types & simple amendment tips  
+3. Choosing the right mulch for different plants  
+4. Explaining fertilizer basics (NPK made simple)  
+5. Watering: how much is too much?  
+6. Shade vs. sun plants: helping customers choose  
+7. How to recommend native plants customers will love  
+8. Annuals vs. perennials: easy explanations  
+9. Handling “why is my plant dying?” conversations  
+10. Container gardening basics  
+11. Seasonal color recommendations customers appreciate  
+12. Pollinator-friendly plants (bees, butterflies, birds)  
+13. Explaining drought-tolerant plants  
+14. Low-maintenance landscaping ideas  
+15. Trees for Missouri yards (small, medium, large)  
+16. Shrubs for privacy, beauty, and low care  
+17. Explaining fruit trees & edible landscaping  
+18. Helping customers pick houseplants  
+19. How to guide beginners without overwhelming them  
+20. Upselling: soil, pots, and fertilizers naturally  
+21. Seasonal sales tips: spring, summer, fall, winter  
+22. Spotting and solving common pest problems  
+23. Lawn basics: cool season grasses in Missouri  
+24. Handling complaints with confidence  
+25. Leaving a lasting impression: turning first-time buyers into regulars  
+""")
+
+st.info("Each episode is crafted to **train staff in real customer interactions** — not theory, just practical knowledge.")
+
+# -------------------
 # Connect to Google Sheets via st.secrets
 # -------------------
 SCOPE = ["https://spreadsheets.google.com/feeds",
