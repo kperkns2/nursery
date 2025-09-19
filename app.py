@@ -12,20 +12,18 @@ st.set_page_config(
 )
 
 # -------------------
-# Helper for layout
+# Helper for styled section
 # -------------------
-def section(content_func, bg="#FFFFFF"):
-    """Render a section with background and padding.
-       content_func should be a function that writes Streamlit elements.
-    """
-    st.markdown(
-        f"""
-        <div style="background-color:{bg}; padding:2rem; border-radius:10px; margin:1rem 0;">
-        """,
-        unsafe_allow_html=True,
-    )
-    content_func()
-    st.markdown("</div>", unsafe_allow_html=True)
+def styled_section(content_func, bg="#FFFFFF"):
+    with st.container():
+        st.markdown(
+            f"""
+            <div style="background-color:{bg}; padding:2rem; border-radius:10px; margin:1rem 0;">
+            """,
+            unsafe_allow_html=True,
+        )
+        content_func()
+        st.markdown("</div>", unsafe_allow_html=True)
 
 # -------------------
 # Header / Hero
@@ -33,7 +31,7 @@ def section(content_func, bg="#FFFFFF"):
 st.title("🌱 Grow Knowledge. Grow Sales.")
 st.subheader("Audio Training for Nursery Staff & Customers")
 
-section(
+styled_section(
     lambda: st.markdown(
         """
         When customers walk into your nursery, they’re not just buying plants —  
@@ -66,7 +64,7 @@ def audio_demo():
         """
     )
 
-section(audio_demo, bg="#F9F9F9")
+styled_section(audio_demo, bg="#F9F9F9")
 
 # -------------------
 # Series Overview
@@ -92,7 +90,7 @@ def overview():
         "that keeps your staff sharp and customers coming back."
     )
 
-section(overview, bg="#FFFFFF")
+styled_section(overview, bg="#FFFFFF")
 
 # -------------------
 # Google Sheets Setup
@@ -129,7 +127,7 @@ def lead_form():
                 sheet.append_row([name, email, nursery_name, message])
                 st.success("✅ Thank you! We’ll be in touch shortly.")
 
-section(lead_form, bg="#F9F9F9")
+styled_section(lead_form, bg="#F9F9F9")
 
 # -------------------
 # Footer
