@@ -1,144 +1,238 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="Nursery Training Audio Series",
-    page_icon="🌱",
-    layout="wide"
-)
+# Streamlit Page Config
+st.set_page_config(page_title="Nursery Training Audio Series", layout="wide")
 
-# Full HTML Template
-html_code = """
-<style>
-/* Reset spacing for Streamlit */
-.main .block-container {
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    padding-left: 0rem;
-    padding-right: 0rem;
-    max-width: 100% !important;
-}
+# Load custom HTML/CSS into Streamlit
+st.markdown(
+    """
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: #2d2d2d;
+        background-color: #fdfdfd;
+      }
 
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+      header {
+        background: linear-gradient(rgba(0, 70, 40, 0.6), rgba(0, 70, 40, 0.6)), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+        color: white;
+        text-align: center;
+        padding: 8rem 1rem;
+      }
 
-/* Banner */
-.banner {
-    background: linear-gradient(135deg, #2d6a4f, #95d5b2);
-    color: white;
-    text-align: center;
-    padding: 4rem 2rem;
-}
-.banner h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-.banner p {
-    font-size: 1.2rem;
-}
+      header h1 {
+        font-size: 3.5rem;
+        margin: 0;
+        font-weight: 700;
+      }
 
-/* Section styling */
-.section {
-    padding: 3rem 2rem;
-    max-width: 1000px;
-    margin: auto;
-}
-.section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #004F71;
-}
+      header p {
+        font-size: 1.4rem;
+        margin-top: 1rem;
+        font-weight: 400;
+      }
 
-/* Highlight blocks */
-.highlight-blue {
-    background-color: #E8F4FA;
-    color: #004F71;
-    padding: 1.5rem;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 2rem 0;
-}
-.highlight-gray {
-    background-color: #f5f5f5;
-    color: #333;
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin: 2rem 0;
-}
+      .section {
+        max-width: 1000px;
+        margin: auto;
+        padding: 4rem 2rem;
+      }
 
-/* Audio demo */
-.audio-demo {
-    margin-top: 1rem;
-}
+      .section.alt {
+        background-color: #f9f9f9;
+      }
 
-/* Footer */
-footer {
-    background-color: #f9f9f9;
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 3rem;
-}
-</style>
+      .highlight.blue {
+        background: linear-gradient(135deg, #e8f4fa, #cfe6f3);
+        color: #004f71;
+        padding: 2.5rem;
+        border-radius: 16px;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 3rem auto;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        max-width: 900px;
+      }
 
-<div class="banner">
-    <h1>Grow Knowledge. Grow Sales.</h1>
-    <p>Audio Training for Nursery Staff & Customers</p>
-</div>
+      .highlight.gray {
+        background: #f2f2f2;
+        color: #333;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin: 2rem auto;
+        max-width: 850px;
+      }
 
-<div class="section">
-    <p>
-        When customers walk into your nursery, they’re not just buying plants — they’re buying <b>expertise</b>.
-    </p>
-    <p>
-        Our short, practical audio series equips your staff with the right words, so they can confidently guide every customer decision.
-    </p>
-</div>
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #002b45;
+      }
 
-<div class="section">
-    <div class="highlight-blue">
-        In Missouri, nearly <b>40% of 5-star reviews for nurseries mention “knowledgeable staff.”</b><br>
-        That knowledge directly drives trust, loyalty, and repeat business.
+      .audio-sample {
+        text-align: center;
+      }
+
+      audio {
+        margin: 1.5rem 0;
+        width: 100%;
+        max-width: 650px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      ul li {
+        margin: 0.6rem 0;
+      }
+
+      form label {
+        font-weight: 600;
+        display: block;
+        margin-top: 1rem;
+        color: #002b45;
+      }
+
+      input, textarea {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        padding: 0.75rem;
+        width: 100%;
+        margin-top: 0.3rem;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      input:focus, textarea:focus {
+        outline: none;
+        border-color: #0077b6;
+        box-shadow: 0 0 6px rgba(0, 119, 182, 0.4);
+      }
+
+      .cta {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      .cta button {
+        background: linear-gradient(135deg, #0077b6, #004f71);
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.3s;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        font-weight: 600;
+      }
+
+      .cta button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      }
+
+      footer {
+        text-align: center;
+        background: #002b45;
+        color: white;
+        padding: 2rem;
+        margin-top: 2rem;
+      }
+
+      footer small {
+        font-size: 1rem;
+        opacity: 0.85;
+      }
+
+      .plant-image {
+        text-align: center;
+        margin: 2rem 0;
+      }
+
+      .plant-image img {
+        max-width: 250px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      }
+    </style>
+    
+    <header>
+      <h1>Grow Knowledge. Grow Sales.</h1>
+      <p>Audio Training for Nursery Staff & Customers in Missouri</p>
+    </header>
+
+    <section class="section">
+      <p>When customers walk into your nursery, they’re not just buying plants — they’re buying <strong>expertise</strong>. Our short, practical audio series equips your staff with the right words, so they can confidently guide every customer decision.</p>
+    </section>
+
+    <div class="highlight blue">
+      In Missouri, nearly <strong>40% of 5-star reviews for nurseries mention “knowledgeable staff.”</strong><br>
+      That knowledge directly drives trust, loyalty, and repeat business.
     </div>
-</div>
 
-<div class="section">
-    <h2>Featured Sample Episode</h2>
-    <p><b>Soil Amendments in Missouri</b> — how to explain clay, loam, and rocky soils, plus which amendments build trust with customers.</p>
-    <div class="audio-demo">
-        <audio controls>
-            <source src="soil_ammendments.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
+    <div class="plant-image">
+      <img src="https://images.unsplash.com/photo-1614594970844-f9ea8561e296?auto=format&fit=crop&w=500&q=80" alt="Missouri Plant Nursery">
     </div>
-    <p>👉 This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <b>practical, professional, and customer-oriented</b>.</p>
-</div>
 
-<div class="section">
-    <h2>The 25-Episode Training Series</h2>
-    <p>
-        Each episode is short, focused, and designed to help staff handle real customer scenarios.
-    </p>
-    <ul>
+    <section class="section alt audio-sample">
+      <h2>Featured Sample Episode</h2>
+      <p><strong>Soil Amendments in Missouri</strong> — how to explain clay, loam, and rocky soils, plus which amendments build trust with customers.</p>
+      <audio controls>
+        <source src="soil_ammendments.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="highlight gray">
+        This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>The 25-Episode Training Series</h2>
+      <p>Each episode is short, focused, and designed to help staff handle real customer scenarios.</p>
+      <ul>
         <li>Missouri soil types & amendments</li>
         <li>Choosing trees & shrubs for local climates</li>
         <li>Seasonal care & maintenance tips</li>
         <li>Explaining native vs. exotic plants</li>
         <li>Watering, fertilizing, and pest prevention</li>
         <li>Common customer questions — answered with confidence</li>
-    </ul>
-    <p>
-        Together, the series builds a foundation of <b>expert communication</b> that keeps your staff sharp and customers coming back.
-    </p>
-</div>
+        <li>And much more…</li>
+      </ul>
+      <div class="highlight gray">
+        Together, the series builds a foundation of <strong>expert communication</strong> that keeps your staff sharp and customers coming back.
+      </div>
+    </section>
 
-<footer>
-    Made for Missouri nurseries — empowering staff, delighting customers.
-</footer>
-"""
+    <section class="section alt">
+      <h2>Get More Information</h2>
+      <form>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name">
 
-st.components.v1.html(html_code, height=2000, scrolling=True)
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email">
+
+        <label for="nursery">Nursery Name</label>
+        <input type="text" id="nursery" name="nursery">
+
+        <label for="message">What would you like to improve about your staff training?</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <div class="cta">
+          <button type="submit">Request Info</button>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <small>Made for Missouri nurseries — empowering staff, delighting customers.</small>
+    </footer>
+    """,
+    unsafe_allow_html=True,
+)
