@@ -173,7 +173,6 @@ st.markdown(
 
 
 col1, col2, col3 = st.columns([1,1,1])
-
 with col1:
     st.image(
         "https://images.unsplash.com/photo-1604933762019-d72f1e7a702d?auto=format&fit=crop&w=600&q=80",
@@ -190,9 +189,6 @@ with col3:
         caption="Plants thriving in good soil",
         use_container_width=True,
     )
-
-
-
 # col2.audio("soil_ammendments.mp3", format="audio/mp3")
 
 # -------------------
