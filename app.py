@@ -117,13 +117,15 @@ st.markdown("""
 </section>
 """, unsafe_allow_html=True)
 
-st.audio("soil_ammendments.mp3", format="audio/mp3")
-
-st.markdown("""
-<div class="highlight gray">
-This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>.
-</div>
-""", unsafe_allow_html=True)
+with st.container():
+    st.markdown("<div style='max-width:900px;margin:auto;text-align:center;'>", unsafe_allow_html=True)
+    st.audio("soil_ammendments.mp3", format="audio/mp3")
+    st.markdown("""
+    <div class="highlight gray">
+    This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>.
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # Series Overview
 st.markdown("""
