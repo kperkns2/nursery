@@ -169,8 +169,31 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+
+
 col1, col2, col3 = st.columns([1,1,1])
-col2.audio("soil_ammendments.mp3", format="audio/mp3")
+
+with col1:
+    st.image(
+        "https://images.unsplash.com/photo-1604933762019-d72f1e7a702d?auto=format&fit=crop&w=600&q=80",
+        caption="Healthy Missouri soil",
+        use_container_width=True,
+    )
+
+with col2:
+    st.audio("soil_ammendments.mp3", format="audio/mp3")
+
+with col3:
+    st.image(
+        "https://images.unsplash.com/photo-1599140780302-f3e216d8df80?auto=format&fit=crop&w=600&q=80",
+        caption="Plants thriving in good soil",
+        use_container_width=True,
+    )
+
+
+
+# col2.audio("soil_ammendments.mp3", format="audio/mp3")
 
 # -------------------
 # Series Overview
