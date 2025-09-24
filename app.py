@@ -19,7 +19,7 @@ st.markdown("""
       background: linear-gradient(rgba(0, 70, 40, 0.6), rgba(0, 70, 40, 0.6)), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
       color: white;
       text-align: center;
-      padding: 8rem 1rem 6rem;
+      padding: 18rem 1rem 6rem;
     }
 
     header h1 {
