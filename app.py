@@ -42,7 +42,7 @@ st.markdown(
         url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
         color: white;
         text-align: center;
-        padding: 10rem 1rem 6rem; /* extra space at top */
+        padding: 10rem 1rem 6rem;
       }
 
       header h1 {
@@ -104,9 +104,9 @@ st.markdown(
         max-width: 700px;
         border-radius: 15px;
         padding: 10px;
-        background: linear-gradient(270deg, #8bc34a, #c5e1a5, #aed581, #dce775);
-        background-size: 800% 800%;
-        animation: gradientBorder 30s ease infinite;
+        background: linear-gradient(270deg, #8bc34a, #c5e1a5, #aed581, #dce775, #c8e6c9, #dcedc8);
+        background-size: 1200% 1200%;
+        animation: gradientBorder 12s ease infinite;
       }
 
       audio {
@@ -134,8 +134,9 @@ st.markdown(
         background-color: #006644 !important;
         color: white !important;
         font-weight: 600 !important;
-        border-radius: 8px !important;
-        padding: 0.6rem 1.2rem !important;
+        border-radius: 50px !important;
+        padding: 0.8rem 2rem !important;
+        font-size: 1.1rem !important;
       }
 
       footer {
@@ -171,7 +172,7 @@ st.markdown(
 )
 
 # -------------------
-# Audio Sample Section with Subtle Gardening Gradient Border
+# Audio Sample Section
 # -------------------
 st.markdown(
     """
@@ -186,6 +187,79 @@ st.markdown(
         </audio>
       </div>
     </section>
+    """,
+    unsafe_allow_html=True,
+)
+
+# -------------------
+# Series Overview
+# -------------------
+st.markdown(
+    """
+    <section class="section">
+      <h2>The 25-Episode Training Series</h2>
+      <p>Each episode is short, focused, and designed to help staff handle real customer scenarios.</p>
+      <ul>
+        <li>Missouri soil types & amendments</li>
+        <li>Choosing trees & shrubs for local climates</li>
+        <li>Seasonal care & maintenance tips</li>
+        <li>Explaining native vs. exotic plants</li>
+        <li>Watering, fertilizing, and pest prevention</li>
+        <li>Common customer questions — answered with confidence</li>
+        <li>And much more…</li>
+      </ul>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
+
+# -------------------
+# Lead Capture Form
+# -------------------
+st.markdown(
+    """
+    <section class='section alt'>
+      <h2>Get More Information</h2>
+      <p>Fill out the form below to receive up to <strong>5 additional free sample episodes</strong> directly to your inbox.</p>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
+
+with st.form("lead_form"):
+    name = st.text_input("Your Name")
+    email = st.text_input("Work Email")
+    nursery = st.text_input("Nursery Name")
+    episodes = st.multiselect(
+        "Which episodes are you most interested in? (Select up to 5)",
+        [
+            "Soil Amendments in Missouri",
+            "Trees & Shrubs for Local Climates",
+            "Seasonal Care & Maintenance",
+            "Native vs. Exotic Plants",
+            "Watering & Fertilizing Basics",
+            "Pest Prevention Techniques",
+            "Handling Common Customer Questions"
+        ]
+    )
+    message = st.text_area("What would you like to improve about your staff training?")
+
+    submit = st.form_submit_button("🌿 Request Free Samples")
+    if submit:
+        if not name or not email:
+            st.error("Please enter at least your name and email.")
+        else:
+            sheet.append_row([name, email, nursery, ", ".join(episodes), message])
+            st.success("✅ Thank you! We’ll send your free episodes shortly.")
+
+# -------------------
+# Footer
+# -------------------
+st.markdown(
+    """
+    <footer>
+      <small>Made for Missouri nurseries — empowering staff, delighting customers.</small>
+    </footer>
     """,
     unsafe_allow_html=True,
 )
