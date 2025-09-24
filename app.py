@@ -160,7 +160,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-col1, col2, col3 = st.beta_columns([1,1,1])
+col1, col2, col3 = st.columns([1,1,1])
 
 col2.audio("soil_ammendments.mp3", format="audio/mp3")
 st.markdown(
