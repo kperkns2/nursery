@@ -164,6 +164,7 @@ st.markdown(
     <section class="section alt">
       <h2>Featured Sample Episode</h2>
       <p><strong>Soil Amendments in Missouri</strong> — how to explain clay, loam, and rocky soils, plus which amendments build trust with customers.</p>
+      <p>This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>. </p>
     </section>
     """,
     unsafe_allow_html=True,
