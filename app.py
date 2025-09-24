@@ -11,72 +11,216 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🌱 Grow Knowledge. Grow Sales.")
-st.subheader("Audio Training for Nursery Staff & Customers")
-
 # -------------------
-# Hero Section
+# Google Sheets Setup
 # -------------------
-st.markdown("""
-Boost your nursery’s reputation with staff who **sound like experts**.  
-In Missouri, nearly **40% of 5-star nursery reviews mention “knowledgeable staff.”**  
-Our short, practical audio episodes sharpen your team’s plant knowledge —  
-so they can deliver the confident advice customers love.
-""")
-
-# -------------------
-# Demo Audio
-# -------------------
-st.markdown("### 🎧 Sample Episode: Soil Amendments in Missouri")
-audio_file = open("soil_ammendments.mp3", "rb")
-st.audio(audio_file.read(), format="audio/mp3")
-
-st.markdown("""
-This 5-minute episode trains staff how to explain clay, loam, and rocky soils —  
-plus what amendments work best. Every episode is **practical, customer-oriented,  
-and designed to increase customer trust**.
-""")
-
-# -------------------
-# Connect to Google Sheets via st.secrets
-# -------------------
-SCOPE = ["https://spreadsheets.google.com/feeds",
-         "https://www.googleapis.com/auth/drive"]
-
-# Read the service account JSON from secrets
+SCOPE = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
+]
 creds = Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=SCOPE
+    st.secrets["gcp_service_account"], scopes=SCOPE
 )
 client = gspread.authorize(creds)
-
-# Open your sheet (replace with your actual Spreadsheet ID)
 SPREADSHEET_ID = st.secrets["spreadsheet_id"]
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
 # -------------------
-# Lead Form
+# Custom Styles
 # -------------------
-st.markdown("---")
-st.markdown("## 📋 Get More Information")
+st.markdown(
+    """
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: #2d2d2d;
+        background-color: #fdfdfd;
+      }
 
+      header {
+        background: linear-gradient(rgba(0, 70, 40, 0.8), rgba(0, 70, 40, 0.8)),
+        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+        color: white;
+        text-align: center;
+        padding: 8rem 1rem 6rem;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      header p {
+        font-size: 1.3rem;
+        margin-top: 1rem;
+      }
+
+      .section {
+        max-width: 850px;
+        margin: auto;
+        padding: 3rem 1.5rem;
+      }
+
+      .section.alt {
+        background-color: #f9f9f9;
+      }
+
+      .highlight.blue {
+        background: linear-gradient(135deg, #e8f4fa, #cfe6f3);
+        color: #004f71;
+        padding: 2rem;
+        border-radius: 14px;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 2.5rem auto;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+
+      .highlight.gray {
+        background: #f2f2f2;
+        color: #333;
+        padding: 1.8rem;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 1.1rem;
+        margin: 2rem auto;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #002b45;
+        text-align: center;
+      }
+
+      audio {
+        display: block;
+        margin: 1.5rem auto;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      }
+
+      .form-container {
+        max-width: 700px;
+        margin: auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+
+      footer {
+        text-align: center;
+        background: #002b45;
+        color: white;
+        padding: 2rem;
+        margin-top: 2rem;
+      }
+    </style>
+
+    <header>
+      <h1>Grow Knowledge. Grow Sales.</h1>
+      <p>Audio Training for Nursery Staff & Customers in Missouri</p>
+    </header>
+    """,
+    unsafe_allow_html=True,
+)
+
+# -------------------
+# Intro Section
+# -------------------
+st.markdown(
+    """
+    <section class="section">
+      <p>When customers walk into your nursery, they’re not just buying plants — they’re buying <strong>expertise</strong>. Our short, practical audio series equips your staff with the right words, so they can confidently guide every customer decision.</p>
+    </section>
+    <div class="highlight blue">
+      In Missouri, nearly <strong>40% of 5-star reviews for nurseries mention “knowledgeable staff.”</strong><br>
+      That knowledge directly drives trust, loyalty, and repeat business.
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# -------------------
+# Audio Sample Section
+# -------------------
+st.markdown(
+    """
+    <section class="section alt">
+      <h2>Featured Sample Episode</h2>
+      <p><strong>Soil Amendments in Missouri</strong> — how to explain clay, loam, and rocky soils, plus which amendments build trust with customers.</p>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
+st.audio("soil_ammendments.mp3", format="audio/mp3")
+st.markdown(
+    """
+    <div class="highlight gray">
+      This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>.
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# -------------------
+# Series Overview
+# -------------------
+st.markdown(
+    """
+    <section class="section">
+      <h2>The 25-Episode Training Series</h2>
+      <p>Each episode is short, focused, and designed to help staff handle real customer scenarios.</p>
+      <ul>
+        <li>Missouri soil types & amendments</li>
+        <li>Choosing trees & shrubs for local climates</li>
+        <li>Seasonal care & maintenance tips</li>
+        <li>Explaining native vs. exotic plants</li>
+        <li>Watering, fertilizing, and pest prevention</li>
+        <li>Common customer questions — answered with confidence</li>
+        <li>And much more…</li>
+      </ul>
+      <div class="highlight gray">
+        Together, the series builds a foundation of <strong>expert communication</strong> that keeps your staff sharp and customers coming back.
+      </div>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
+
+# -------------------
+# Lead Capture Form
+# -------------------
+st.markdown("<section class='section alt'><h2>Get More Information</h2></section>", unsafe_allow_html=True)
+
+st.markdown("<div class='form-container'>", unsafe_allow_html=True)
 with st.form("lead_form"):
     name = st.text_input("Your Name")
     email = st.text_input("Work Email")
-    nursery_name = st.text_input("Nursery Name")
+    nursery = st.text_input("Nursery Name")
     message = st.text_area("What would you like to improve about your staff training?")
 
-    submitted = st.form_submit_button("Request Info")
-    if submitted:
+    if st.form_submit_button("🚀 Request Info"):
         if not name or not email:
             st.error("Please enter at least your name and email.")
         else:
-            sheet.append_row([name, email, nursery_name, message])
+            sheet.append_row([name, email, nursery, message])
             st.success("✅ Thank you! We’ll be in touch shortly.")
+st.markdown("</div>", unsafe_allow_html=True)
 
 # -------------------
 # Footer
 # -------------------
-st.markdown("---")
-st.caption("Made for Missouri nurseries — empowering staff, delighting customers.")
-
+st.markdown(
+    """
+    <footer>
+      <small>Made for Missouri nurseries — empowering staff, delighting customers.</small>
+    </footer>
+    """,
+    unsafe_allow_html=True,
+)
