@@ -168,7 +168,8 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-st.audio("soil_ammendments.mp3", format="audio/mp3")
+col1, col2, col3 = st.columns([1,1,1])
+col2.audio("soil_ammendments.mp3", format="audio/mp3")
 st.markdown(
     """
     <div class="highlight gray">
@@ -208,7 +209,6 @@ st.markdown(
 # -------------------
 st.markdown("<section class='section alt'><h2>Get More Information</h2><p>Fill out the form below to receive up to <strong>5 additional free sample episodes</strong> directly to your inbox.</p></section>", unsafe_allow_html=True)
 
-st.markdown("<div class='form-container'>", unsafe_allow_html=True)
 with st.form("lead_form"):
     name = st.text_input("Your Name")
     email = st.text_input("Work Email")
