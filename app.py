@@ -171,14 +171,6 @@ st.markdown(
 )
 col1, col2, col3 = st.columns([1,1,1])
 col2.audio("soil_ammendments.mp3", format="audio/mp3")
-st.markdown(
-    """
-    <div class="highlight gray">
-      This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>.
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
 
 # -------------------
 # Series Overview
