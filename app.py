@@ -97,13 +97,28 @@ st.markdown(
         text-align: center;
       }
 
-      audio {
+      .audio-wrapper {
+        position: relative;
         display: block;
-        margin: 1.5rem auto;
-        width: 100%;
+        margin: 2rem auto;
         max-width: 700px;
+        border-radius: 15px;
+        padding: 10px;
+        background: linear-gradient(270deg, #00c853, #64dd17, #aeea00, #ffd600, #ff6d00, #d50000, #d500f9, #00c853);
+        background-size: 1600% 1600%;
+        animation: gradientBorder 10s ease infinite;
+      }
+
+      audio {
+        width: 100%;
         border-radius: 10px;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        display: block;
+      }
+
+      @keyframes gradientBorder {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
       }
 
       .form-container {
@@ -131,7 +146,6 @@ st.markdown(
         margin-top: 2rem;
       }
     </style>
-
     <header>
       <h1>Grow Knowledge. Grow Sales.</h1>
       <p>Audio Training for Nursery Staff & Customers in Missouri</p>
@@ -157,7 +171,7 @@ st.markdown(
 )
 
 # -------------------
-# Audio Sample Section
+# Audio Sample Section with Gradient Border
 # -------------------
 st.markdown(
     """
@@ -165,97 +179,13 @@ st.markdown(
       <h2>Featured Sample Episode</h2>
       <p><strong>Soil Amendments in Missouri</strong> — how to explain clay, loam, and rocky soils, plus which amendments build trust with customers.</p>
       <p>This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>.</p>
-    </section>
-    """,
-    unsafe_allow_html=True,
-)
-
-col1, col2, col3 = st.columns([1,1,1])
-
-with col1:
-    st.image(
-        "https://images.unsplash.com/photo-1604933762019-d72f1e7a702d?auto=format&fit=crop&w=600&q=80",
-        caption="Healthy Missouri soil",
-        use_container_width=True,
-    )
-
-with col2:
-    st.audio("soil_ammendments.mp3", format="audio/mp3")
-
-with col3:
-    st.image(
-        "https://images.unsplash.com/photo-1599140780302-f3e216d8df80?auto=format&fit=crop&w=600&q=80",
-        caption="Plants thriving in good soil",
-        use_container_width=True,
-    )
-
-# -------------------
-# Series Overview
-# -------------------
-st.markdown(
-    """
-    <section class="section">
-      <h2>The 25-Episode Training Series</h2>
-      <p>Each episode is short, focused, and designed to help staff handle real customer scenarios.</p>
-      <ul>
-        <li>Missouri soil types & amendments</li>
-        <li>Choosing trees & shrubs for local climates</li>
-        <li>Seasonal care & maintenance tips</li>
-        <li>Explaining native vs. exotic plants</li>
-        <li>Watering, fertilizing, and pest prevention</li>
-        <li>Common customer questions — answered with confidence</li>
-        <li>And much more…</li>
-      </ul>
-      <div class="highlight gray">
-        Together, the series builds a foundation of <strong>expert communication</strong> that keeps your staff sharp and customers coming back.
+      <div class="audio-wrapper">
+        <audio controls>
+          <source src='soil_ammendments.mp3' type='audio/mp3'>
+          Your browser does not support the audio element.
+        </audio>
       </div>
     </section>
-    """,
-    unsafe_allow_html=True,
-)
-
-# -------------------
-# Lead Capture Form
-# -------------------
-st.markdown("<section class='section alt'><h2>Get More Information</h2><p>Fill out the form below to receive up to <strong>5 additional free sample episodes</strong> directly to your inbox.</p></section>", unsafe_allow_html=True)
-
-st.markdown("<div class='form-container'>", unsafe_allow_html=True)
-with st.form("lead_form"):
-    name = st.text_input("Your Name")
-    email = st.text_input("Work Email")
-    nursery = st.text_input("Nursery Name")
-    episodes = st.multiselect(
-        "Which episodes are you most interested in? (Select up to 5)",
-        [
-            "Soil Amendments in Missouri",
-            "Trees & Shrubs for Local Climates",
-            "Seasonal Care & Maintenance",
-            "Native vs. Exotic Plants",
-            "Watering & Fertilizing Basics",
-            "Pest Prevention Techniques",
-            "Handling Common Customer Questions"
-        ]
-    )
-    message = st.text_area("What would you like to improve about your staff training?")
-
-    submit = st.form_submit_button("🌿 Request Free Samples", help="Submit to receive sample episodes")
-    if submit:
-        if not name or not email:
-            st.error("Please enter at least your name and email.")
-        else:
-            sheet.append_row([name, email, nursery, ", ".join(episodes), message])
-            st.success("✅ Thank you! We’ll send your free episodes shortly.")
-
-st.markdown("</div>", unsafe_allow_html=True)
-
-# -------------------
-# Footer
-# -------------------
-st.markdown(
-    """
-    <footer>
-      <small>Made for Missouri nurseries — empowering staff, delighting customers.</small>
-    </footer>
     """,
     unsafe_allow_html=True,
 )
