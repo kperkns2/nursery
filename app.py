@@ -57,7 +57,7 @@ st.markdown(
       }
 
       .section {
-        max-width: 1100px;
+        max-width: 1200px;
         margin: auto;
         padding: 3rem 2rem;
       }
@@ -76,7 +76,7 @@ st.markdown(
         font-weight: 600;
         margin: 2.5rem auto;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        max-width: 1000px;
+        max-width: 1100px;
       }
 
       .highlight.gray {
@@ -87,7 +87,7 @@ st.markdown(
         text-align: center;
         font-size: 1.1rem;
         margin: 2rem auto;
-        max-width: 950px;
+        max-width: 1050px;
       }
 
       h2 {
@@ -107,12 +107,20 @@ st.markdown(
       }
 
       .form-container {
-        max-width: 800px;
+        max-width: 1000px;
         margin: auto;
         background: #fff;
         padding: 2.5rem;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+
+      .submit-btn button {
+        background-color: #006644 !important;
+        color: white !important;
+        font-weight: 600 !important;
+        border-radius: 8px !important;
+        padding: 0.6rem 1.2rem !important;
       }
 
       footer {
@@ -160,9 +168,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-col1, col2, col3 = st.columns([1,1,1])
-
-col2.audio("soil_ammendments.mp3", format="audio/mp3")
+st.audio("soil_ammendments.mp3", format="audio/mp3")
 st.markdown(
     """
     <div class="highlight gray">
@@ -200,21 +206,35 @@ st.markdown(
 # -------------------
 # Lead Capture Form
 # -------------------
-st.markdown("<section class='section alt'><h2>Get More Information</h2></section>", unsafe_allow_html=True)
+st.markdown("<section class='section alt'><h2>Get More Information</h2><p>Fill out the form below to receive up to <strong>5 additional free sample episodes</strong> directly to your inbox.</p></section>", unsafe_allow_html=True)
 
-# st.markdown("<div class='form-container'>", unsafe_allow_html=True)
+st.markdown("<div class='form-container'>", unsafe_allow_html=True)
 with st.form("lead_form"):
     name = st.text_input("Your Name")
     email = st.text_input("Work Email")
     nursery = st.text_input("Nursery Name")
+    episodes = st.multiselect(
+        "Which episodes are you most interested in? (Select up to 5)",
+        [
+            "Soil Amendments in Missouri",
+            "Trees & Shrubs for Local Climates",
+            "Seasonal Care & Maintenance",
+            "Native vs. Exotic Plants",
+            "Watering & Fertilizing Basics",
+            "Pest Prevention Techniques",
+            "Handling Common Customer Questions"
+        ]
+    )
     message = st.text_area("What would you like to improve about your staff training?")
 
-    if st.form_submit_button("🚀 Request Info"):
+    submit = st.form_submit_button("🌿 Request Free Samples", help="Submit to receive sample episodes")
+    if submit:
         if not name or not email:
             st.error("Please enter at least your name and email.")
         else:
-            sheet.append_row([name, email, nursery, message])
-            st.success("✅ Thank you! We’ll be in touch shortly.")
+            sheet.append_row([name, email, nursery, ", ".join(episodes), message])
+            st.success("✅ Thank you! We’ll send your free episodes shortly.")
+
 st.markdown("</div>", unsafe_allow_html=True)
 
 # -------------------
