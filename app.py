@@ -42,7 +42,7 @@ st.markdown(
         url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
         color: white;
         text-align: center;
-        padding: 8rem 1rem 6rem;
+        padding: 10rem 1rem 6rem; /* extra space at top */
       }
 
       header h1 {
@@ -104,9 +104,9 @@ st.markdown(
         max-width: 700px;
         border-radius: 15px;
         padding: 10px;
-        background: linear-gradient(270deg, #00c853, #64dd17, #aeea00, #ffd600, #ff6d00, #d50000, #d500f9, #00c853);
-        background-size: 1600% 1600%;
-        animation: gradientBorder 10s ease infinite;
+        background: linear-gradient(270deg, #8bc34a, #c5e1a5, #aed581, #dce775);
+        background-size: 800% 800%;
+        animation: gradientBorder 30s ease infinite;
       }
 
       audio {
@@ -171,7 +171,7 @@ st.markdown(
 )
 
 # -------------------
-# Audio Sample Section with Gradient Border
+# Audio Sample Section with Subtle Gardening Gradient Border
 # -------------------
 st.markdown(
     """
