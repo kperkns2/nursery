@@ -189,9 +189,7 @@ st.markdown(
         <li>Common customer questions — answered with confidence</li>
         <li>And much more…</li>
       </ul>
-      <div class="highlight gray">
-        Together, the series builds a foundation of <strong>expert communication</strong> that keeps your staff sharp and customers coming back.
-      </div>
+      
     </section>
     """,
     unsafe_allow_html=True,
