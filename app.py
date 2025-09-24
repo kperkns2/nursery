@@ -8,7 +8,7 @@ from google.oauth2.service_account import Credentials
 st.set_page_config(
     page_title="Nursery Training Audio Series",
     page_icon="🌱",
-    layout="centered"
+    layout="wide"
 )
 
 # -------------------
@@ -57,9 +57,9 @@ st.markdown(
       }
 
       .section {
-        max-width: 850px;
+        max-width: 1100px;
         margin: auto;
-        padding: 3rem 1.5rem;
+        padding: 3rem 2rem;
       }
 
       .section.alt {
@@ -76,6 +76,7 @@ st.markdown(
         font-weight: 600;
         margin: 2.5rem auto;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        max-width: 1000px;
       }
 
       .highlight.gray {
@@ -86,6 +87,7 @@ st.markdown(
         text-align: center;
         font-size: 1.1rem;
         margin: 2rem auto;
+        max-width: 950px;
       }
 
       h2 {
@@ -99,16 +101,16 @@ st.markdown(
         display: block;
         margin: 1.5rem auto;
         width: 100%;
-        max-width: 600px;
+        max-width: 700px;
         border-radius: 10px;
         box-shadow: 0 3px 8px rgba(0,0,0,0.1);
       }
 
       .form-container {
-        max-width: 700px;
+        max-width: 800px;
         margin: auto;
         background: #fff;
-        padding: 2rem;
+        padding: 2.5rem;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       }
