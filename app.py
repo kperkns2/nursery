@@ -164,15 +164,14 @@ st.markdown(
     <section class="section alt">
       <h2>Featured Sample Episode</h2>
       <p><strong>Soil Amendments in Missouri</strong> — how to explain clay, loam, and rocky soils, plus which amendments build trust with customers.</p>
-      <p>This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>. </p>
+      <p>This 5-minute training shows how everyday questions turn into customer confidence. Every episode is <strong>practical, professional, and customer-oriented</strong>.</p>
     </section>
     """,
     unsafe_allow_html=True,
 )
 
-
-
 col1, col2, col3 = st.columns([1,1,1])
+
 with col1:
     st.image(
         "https://images.unsplash.com/photo-1604933762019-d72f1e7a702d?auto=format&fit=crop&w=600&q=80",
@@ -189,7 +188,6 @@ with col3:
         caption="Plants thriving in good soil",
         use_container_width=True,
     )
-# col2.audio("soil_ammendments.mp3", format="audio/mp3")
 
 # -------------------
 # Series Overview
@@ -208,7 +206,9 @@ st.markdown(
         <li>Common customer questions — answered with confidence</li>
         <li>And much more…</li>
       </ul>
-      
+      <div class="highlight gray">
+        Together, the series builds a foundation of <strong>expert communication</strong> that keeps your staff sharp and customers coming back.
+      </div>
     </section>
     """,
     unsafe_allow_html=True,
@@ -219,6 +219,7 @@ st.markdown(
 # -------------------
 st.markdown("<section class='section alt'><h2>Get More Information</h2><p>Fill out the form below to receive up to <strong>5 additional free sample episodes</strong> directly to your inbox.</p></section>", unsafe_allow_html=True)
 
+st.markdown("<div class='form-container'>", unsafe_allow_html=True)
 with st.form("lead_form"):
     name = st.text_input("Your Name")
     email = st.text_input("Work Email")
