@@ -155,18 +155,22 @@ sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
 # Lead Capture Form
 st.markdown("<section class='section alt'><h2>Get More Information</h2></section>", unsafe_allow_html=True)
-with st.form("lead_form"):
-    name = st.text_input("Your Name")
-    email = st.text_input("Work Email")
-    nursery = st.text_input("Nursery Name")
-    message = st.text_area("What would you like to improve about your staff training?")
 
-    if st.form_submit_button("🚀 Request Info"):
-        if not name or not email:
-            st.error("Please enter at least your name and email.")
-        else:
-            sheet.append_row([name, email, nursery, message])
-            st.success("✅ Thank you! We’ll be in touch shortly.")
+with st.container():
+    st.markdown("<div style='max-width:800px;margin:auto;'>", unsafe_allow_html=True)
+    with st.form("lead_form"):
+        name = st.text_input("Your Name")
+        email = st.text_input("Work Email")
+        nursery = st.text_input("Nursery Name")
+        message = st.text_area("What would you like to improve about your staff training?")
+
+        if st.form_submit_button("🚀 Request Info"):
+            if not name or not email:
+                st.error("Please enter at least your name and email.")
+            else:
+                sheet.append_row([name, email, nursery, message])
+                st.success("✅ Thank you! We’ll be in touch shortly.")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # Footer
 st.markdown("""
