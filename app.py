@@ -80,6 +80,3 @@ with st.form("lead_form"):
 st.markdown("---")
 st.caption("Made for Missouri nurseries — empowering staff, delighting customers.")
 
-
-
-This works, make it more professional, informative and persuasive
