@@ -200,7 +200,7 @@ st.markdown(
 # -------------------
 st.markdown("<section class='section alt'><h2>Get More Information</h2></section>", unsafe_allow_html=True)
 
-st.markdown("<div class='form-container'>", unsafe_allow_html=True)
+# st.markdown("<div class='form-container'>", unsafe_allow_html=True)
 with st.form("lead_form"):
     name = st.text_input("Your Name")
     email = st.text_input("Work Email")
