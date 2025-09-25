@@ -54,6 +54,56 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+python
+st.markdown(
+    """
+    <style>
+    /* Hide the Streamlit 'Manage app' button */
+    div[data-testid="stStatusWidget"] {display: none;}
+    iframe[title="streamlitShareMenu"] {display: none;}
+
+    /* Light mode adjustments */
+    body[data-theme="light"] {
+        background-color: #fdfdfd;
+        color: #2d2d2d;
+    }
+
+    /* Dark mode adjustments */
+    body[data-theme="dark"] {
+        background-color: #1e1e1e;
+        color: #f1f1f1;
+    }
+
+    body[data-theme="dark"] header {
+        background: linear-gradient(rgba(0, 40, 20, 0.8), rgba(0, 40, 20, 0.8)),
+        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+        color: #e6ffe6;
+    }
+
+    body[data-theme="dark"] .highlight.blue {
+        background: linear-gradient(135deg, #1b3a3a, #264d4d);
+        color: #aee;
+    }
+
+    body[data-theme="dark"] .highlight.gray {
+        background: #333;
+        color: #eee;
+    }
+
+    body[data-theme="dark"] .form-container {
+        background: #2a2a2a;
+        color: #f1f1f1;
+    }
+
+    body[data-theme="dark"] footer {
+        background: #111;
+        color: #ccc;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # -------------------
 # Custom Styles
