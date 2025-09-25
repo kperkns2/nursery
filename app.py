@@ -43,6 +43,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown(
+    """
+    <style>
+    /* Hide the Streamlit 'Manage app' button */
+    div[data-testid="stStatusWidget"] {display: none;}
+    iframe[title="streamlitShareMenu"] {display: none;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # -------------------
 # Custom Styles
