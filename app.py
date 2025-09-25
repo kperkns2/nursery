@@ -25,6 +25,25 @@ client = gspread.authorize(creds)
 SPREADSHEET_ID = st.secrets["spreadsheet_id"]
 sheet = client.open_by_key(SPREADSHEET_ID).sheet1
 
+
+st.markdown(
+    """
+    <style>
+    /* Remove default top padding/whitespace */
+    .block-container {
+        padding-top: 1rem;
+    }
+    
+    /* Optionally also remove default header space */
+    header[data-testid="stHeader"] {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # -------------------
 # Custom Styles
 # -------------------
