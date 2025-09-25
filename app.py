@@ -106,7 +106,7 @@ st.markdown(
         padding: 10px;
         background: linear-gradient(270deg, #8bc34a, #c5e1a5, #aed581, #dce775, #c8e6c9, #dcedc8);
         background-size: 1200% 1200%;
-        animation: gradientBorder 12s ease infinite;
+        animation: gradientBorder 7s ease infinite;
       }
 
       audio {
