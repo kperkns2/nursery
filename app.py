@@ -66,6 +66,22 @@ st.markdown(
         background-color: #fdfdfd;
         color: #2d2d2d;
     }
+    body[data-theme="light"] .form-container {
+        background: #fff;
+        color: #2d2d2d;
+    }
+    body[data-theme="light"] .highlight.blue {
+        background: linear-gradient(135deg, #e8f4fa, #cfe6f3);
+        color: #004f71;
+    }
+    body[data-theme="light"] .highlight.gray {
+        background: #f2f2f2;
+        color: #333;
+    }
+    body[data-theme="light"] footer {
+        background: #002b45;
+        color: white;
+    }
 
     /* Dark mode adjustments */
     body[data-theme="dark"] {
@@ -80,18 +96,19 @@ st.markdown(
     }
 
     body[data-theme="dark"] .highlight.blue {
-        background: linear-gradient(135deg, #1b3a3a, #264d4d);
+        background: linear-gradient(135deg, #163333, #204040);
         color: #aee;
     }
 
     body[data-theme="dark"] .highlight.gray {
-        background: #333;
+        background: #2a2a2a;
         color: #eee;
     }
 
     body[data-theme="dark"] .form-container {
         background: #2a2a2a;
         color: #f1f1f1;
+        border: 1px solid #444;
     }
 
     body[data-theme="dark"] footer {
