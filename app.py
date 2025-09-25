@@ -232,15 +232,59 @@ with st.form("lead_form"):
     nursery = st.text_input("Nursery Name")
     episodes = st.multiselect(
         "Which episodes are you most interested in? (Select up to 5)",
-        [
-            "Soil Amendments in Missouri",
-            "Trees & Shrubs for Local Climates",
-            "Seasonal Care & Maintenance",
-            "Native vs. Exotic Plants",
-            "Watering & Fertilizing Basics",
-            "Pest Prevention Techniques",
-            "Handling Common Customer Questions"
-        ]
+             [
+              "Soil Amendments in Missouri",
+              "Drainage Detectives: Fixing Wet & Soggy Spots",
+              "pH Plain-Talk: What to Test and What to Tell",
+              "Mulch Matters: Types, Thickness & Timing",
+              "Compost Confidence: Building Better Garden Soil",
+              "Raised Beds & Mixes That Actually Work",
+              "Quick Soil Tests for the Sales Floor",
+              "Right Tree, Right Place: Matching Trees to Missouri Yards",
+              "Small-Space Shade Trees: Big Impact, Low Fuss",
+              "Shrubs for Sun & Shade: Clear Customer Scripts",
+              "Black Walnut Basics: What Every Customer Should Know",
+              "Fruit Tree Fundamentals: Pollination & Pruning 101",
+              "Evergreen Selection for Year-Round Appeal",
+              "Fast Wins: Shrubs That Establish Quickly",
+              "Perennials That Keep Coming Back",
+              "Annuals for Maximum Wow",
+              "Pollinator Picks: Plants that Attract Bees & Butterflies",
+              "Shade Garden Color: Designing Where the Sun Doesn’t Reach",
+              "Cut Flower Favorites: Grow to Sell, Sell to Grow",
+              "Seasonal Display Planning: Spring to Fall",
+              "Low-Maintenance Borders: Beauty Without the Backache",
+              "Watering for Results: Frequency, Depth & Timing",
+              "Drip & Soaker Basics: When to Recommend",
+              "Rain Gardens & Erosion Fixes",
+              "Drought Response: Quick Advice When the Heat Hits",
+              "Soggy Lawn? Alternatives & Fixes",
+              "Insect ID in 60 Seconds: Friend vs Foe",
+              "Fungal Flags: Spotting & Stopping Common Diseases",
+              "IPM for the Sales Floor: Integrated Pest Management Made Simple",
+              "Deer & Rabbit Defense: Practical Deterrents",
+              "Diagnosing Yellow Leaves: Fast Troubleshooting",
+              "Safe Product Conversations: What to Recommend & When",
+              "Why Natives Win: Selling the Show-Me State Story",
+              "Missouri Prairie Picks: Grasses & Meadow Plants",
+              "Native Trees with Big Payoffs",
+              "Backyard Habitat: Small Steps for Big Wildlife Benefits",
+              "Controlling Invasives: What Homeowners Should Know",
+              "Spring Prep: Getting Your Yard Ready to Grow",
+              "Summer Watch: Heat, Water & Pest Signals",
+              "Fall Tasks That Save Next Year’s Work",
+              "Winter Care & Salt-Safe Plants",
+              "Turn Questions into Sales: Friendly Scripts That Work",
+              "Listening to Reviews: Train from Customer Feedback",
+              "Handling Returns & Tough Conversations",
+              "Merchandise That Sells: Plant Pairings & Display Tips",
+              "Value Bundles: Packages that Customers Actually Buy",
+              "Quick Product Demos: Teach Staff to Demo with Confidence",
+              "Container Combinations that Convert",
+              "Houseplant Rescue: Common Issues & Fast Fixes",
+              "Pollinator Pots & Small-Space Edibles"
+            ]
+
     )
     message = st.text_area("What would you like to improve about your staff training?")
 
