@@ -290,7 +290,7 @@ with st.form("lead_form"):
 
     submit = st.form_submit_button("🌿 Request Free Samples")
     if submit:
-        if not name or not email:
+        if not name or not email or '@' not in email:
             st.error("Please enter at least your name and email.")
         else:
             sheet.append_row([name, email, nursery, ", ".join(episodes), message])
